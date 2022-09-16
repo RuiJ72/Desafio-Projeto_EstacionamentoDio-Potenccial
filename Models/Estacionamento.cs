@@ -20,19 +20,19 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            Console.WriteLine("Introduza a placa do veículo a estacionar: ");
+            Console.WriteLine("               Introduza a placa do veículo a estacionar: \n");
             string placaAdd = Console.ReadLine();
             veiculos.Add(placaAdd);
         }
 
         public void RemoverVeiculo()
         {
-            Console.WriteLine("Introduza a placa do veículo a remover: ");
+            Console.WriteLine("                   Introduza a placa do veículo a remover: \n");
             string placaRemover = Console.ReadLine();
 
             if(veiculos.Any(x => x.ToUpper() == placaRemover.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que esteve etacionado: ");
+                Console.WriteLine("          Digite a quantidade de horas que esteve etacionado: \n");
 
                 //Declaração de Variável inteira e decimal
                 int horas = 0;
@@ -41,12 +41,12 @@ namespace DesafioFundamentos.Models
                 valorTotal = precoInicial + precoHora * horas;
 
                 veiculos.Remove(placaRemover);
-                Console.WriteLine($"O veículo {placaRemover} foi removido sendo o preço final: R${valorTotal}");
+                Console.WriteLine($" O veículo {placaRemover} foi removido sendo o preço final: R${valorTotal}\n");
 
             }
             else
             {
-                Console.WriteLine("Esse veículo não está registrado. Verifique se inseriu a placa corretamente!");
+                Console.WriteLine(" Esse veículo não está registrado. Verifique se inseriu a placa corretamente!\n");
             }
         }
         public void listarVeiculos()
@@ -54,7 +54,7 @@ namespace DesafioFundamentos.Models
             // Verificação dos veículos existentes no estacionamento
             if (veiculos.Any())
             {
-                Console.WriteLine("Os veículos atualmente estacionados são: ");
+                Console.WriteLine(" Os veículos atualmente estacionados são: \n");
                 foreach(string el in veiculos)
                 {
                     Console.WriteLine(el);
@@ -62,7 +62,7 @@ namespace DesafioFundamentos.Models
             }
             else
             {
-                Console.WriteLine("Não existem veículos estacionados!");
+                Console.WriteLine(" Não existem veículos estacionados!\n");
             }
         }
     }   
