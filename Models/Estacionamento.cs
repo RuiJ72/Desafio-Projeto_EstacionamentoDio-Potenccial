@@ -1,67 +1,71 @@
+using DesafioFundamentos.Models;
+
 namespace DesafioFundamentos.Models
-{
+{   
     public class Estacionamento
-    {
+    {   
+        // declaração das variáves
         private decimal precoInicial = 0;
-        private decimal precoPorHora = 0;
+        private decimal precoHora = 0;
+
+        // Criação de uma Lista
         private List<string> veiculos = new List<string>();
 
-        public Estacionamento(decimal precoInicial, decimal precoPorHora)
+        public Estacionamento(decimal precoInicial, decimal precoHora)
         {
             this.precoInicial = precoInicial;
-            this.precoPorHora = precoPorHora;
+            this.precoHora = precoHora;
+
         }
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            Console.WriteLine("Introduza a placa do veículo a estacionar: ");
+            string placaAdd = Console.ReadLine();
+            veiculos.Add(placaAdd);
         }
 
         public void RemoverVeiculo()
         {
-            Console.WriteLine("Digite a placa do veículo para remover:");
+            Console.WriteLine("Introduza a placa do veículo a remover: ");
+            string placaRemover = Console.ReadLine();
 
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
-
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            if(veiculos.Any(x => x.ToUpper() == placaRemover.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                Console.WriteLine("Digite a quantidade de horas que esteve etacionado: ");
 
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
+                //Declaração de Variável inteira e decimal
                 int horas = 0;
-                decimal valorTotal = 0; 
+                horas = int.Parse(Console.ReadLine()); // Conversão. Com Convert To.int32 deu erro
+                decimal valorTotal = 0;
+                valorTotal = precoInicial + precoHora * horas;
 
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
+                veiculos.Remove(placaRemover);
+                Console.WriteLine($"O veículo {placaRemover} foi removido sendo o preço final: R${valorTotal}");
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
             {
-                Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+                Console.WriteLine("Esse veículo não está registrado. Verifique se inseriu a placa corretamente!");
             }
         }
-
-        public void ListarVeiculos()
+        public void listarVeiculos()
         {
-            // Verifica se há veículos no estacionamento
+            // Verificação dos veículos existentes no estacionamento
             if (veiculos.Any())
             {
-                Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                Console.WriteLine("Os veículos atualmente estacionados são: ");
+                foreach(string el in veiculos)
+                {
+                    Console.WriteLine(el);
+                }
             }
             else
             {
-                Console.WriteLine("Não há veículos estacionados.");
+                Console.WriteLine("Não existem veículos estacionados!");
             }
         }
-    }
+    }   
+        
 }
+ 
