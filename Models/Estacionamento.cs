@@ -36,7 +36,7 @@ namespace DesafioFundamentos.Models
 
                 //Declaração de Variável inteira e decimal
                 int horas = 0;
-                horas = int.Parse(Console.ReadLine()); // Conversão. Com Convert To.int32 deu erro
+                horas = Convert.ToInt32(Console.ReadLine()); // Conversão. Com Convert To.int32 deu erro
                 decimal valorTotal = 0;
                 valorTotal = precoInicial + precoHora * horas;
 
